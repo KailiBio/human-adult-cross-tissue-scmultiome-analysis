@@ -54,8 +54,7 @@ manuscript, organized by topic as scripts are added, including:
 
 ## Citation
 
-If you use this code, please cite: *[citation placeholder — update once the
-manuscript is published]*.
+If you use this code, please cite: [Fan et al., An atlas-scale mapping of gene regulatory activity across 21 human tissues.].
 
 ## Contact
 
