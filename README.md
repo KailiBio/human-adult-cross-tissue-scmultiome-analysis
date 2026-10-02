@@ -26,10 +26,13 @@ paired repository:
 This repository is being populated with the analyses underlying the
 manuscript, organized by topic as scripts are added:
 
-- [`01_ccre_identification/`](01_ccre_identification) — cCRE identification and cCRE–gene linking
-- [`02_chromatin_domains/`](02_chromatin_domains) — Cross-tissue, cell-type-resolved chromatin domain (active/repressive) mapping
-- [`03_cancer_remodelling/`](03_cancer_remodelling) — Chromatin domain remodelling analysis across human cancers
-- [`04_variant_effect_models/`](04_variant_effect_models) — Sequence-based models for predicting chromatin-accessibility variant effects
+- [`01_ccre_identification/`](01_ccre_identification) — cCRE identification (raw/consensus peak calling, TSS-proximity grouping)
+- [`02_ccre_analysis/`](02_ccre_analysis) — cCRE tiering, ubiquity, and comparisons to ENCODE/sciATAC/VISTA
+- [`03_TF/`](03_TF) — Transcription factor motif and footprinting analysis
+- [`04_cCRE-gene_links/`](04_cCRE-gene_links) — cCRE–gene linking
+- [`05_conservation/`](05_conservation) — Sequence conservation (e.g. phyloP) analysis
+- [`06_chromatin_domains/`](06_chromatin_domains) — Cross-tissue, cell-type-resolved chromatin domain (active/repressive) mapping
+- [`07_variant_effect_models/`](07_variant_effect_models) — Sequence-based models for predicting chromatin-accessibility variant effects
 - [`common/`](common) — shared utility code (I/O, plotting helpers) used across the above
 
 Each topic folder contains its own `scripts/` and `notebooks/`. Set up the
