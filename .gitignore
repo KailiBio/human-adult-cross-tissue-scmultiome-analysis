@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+*.egg-info/
+
+# Data and large outputs (keep code only; data lives elsewhere)
+data/
+outputs/
+results/
+*.h5ad
+*.h5
+*.loom
+*.bam
+*.bai
+*.bed.gz
+*.tbi
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/

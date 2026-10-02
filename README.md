@@ -24,12 +24,16 @@ paired repository:
 ## Contents
 
 This repository is being populated with the analyses underlying the
-manuscript, organized by topic as scripts are added, including:
+manuscript, organized by topic as scripts are added:
 
-- cCRE identification and cCRE–gene linking
-- Cross-tissue, cell-type-resolved chromatin domain (active/repressive) mapping
-- Chromatin domain remodelling analysis across human cancers
-- Sequence-based models for predicting chromatin-accessibility variant effects
+- [`01_ccre_identification/`](01_ccre_identification) — cCRE identification and cCRE–gene linking
+- [`02_chromatin_domains/`](02_chromatin_domains) — Cross-tissue, cell-type-resolved chromatin domain (active/repressive) mapping
+- [`03_cancer_remodelling/`](03_cancer_remodelling) — Chromatin domain remodelling analysis across human cancers
+- [`04_variant_effect_models/`](04_variant_effect_models) — Sequence-based models for predicting chromatin-accessibility variant effects
+- [`common/`](common) — shared utility code (I/O, plotting helpers) used across the above
+
+Each topic folder contains its own `scripts/` and `notebooks/`. Set up the
+analysis environment with `conda env create -f environment.yml`.
 
 ## Citation
 
