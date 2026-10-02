@@ -6,28 +6,7 @@ body.
 
 ## Abstract
 
-A body-wide view of human gene regulation requires measuring transcription
-and chromatin accessibility together in the same nuclei across tissues.
-Here we generated a cross-tissue single-nucleus multi-omic atlas of 459,856
-nuclei from 21 adult human tissues and four donors, with paired RNA and
-chromatin profiles from the same nuclei. This scale, tissue breadth and
-matched design resolve nine major lineages and 61 broad cell types,
-revealing conserved cell-type programs reshaped by tissue context. The
-atlas identifies 1,085,062 candidate cis-regulatory elements, including
-161,270 elements absent from the ENCODE catalogue, and 871,177 cCRE–gene
-links connecting chromatin accessibility to gene expression. Its
-cross-tissue scope further enables a genome-wide, cell-type-resolved map of
-active and repressive chromatin domains, distinguishing lineage-specific
-release of repression from constitutively repressive regions shared across
-tissues. These constitutive domains show preferential and tumour-type-specific
-remodelling across human cancers. Finally, sequence models trained across
-atlas-defined cell types identify 18,133 predicted chromatin-accessibility
-high-effect variants, including 1,120 broadly active variants with
-increased trait pleiotropy, and predict differential variant effects across
-vascular endothelial subtypes. Together, these data establish a cross-tissue
-RNA–chromatin framework linking cell identity and tissue context to
-regulatory elements, target genes and disease-associated non-coding
-variation.
+Diverse human cell types establish specialized functions through lineage- and context-specific regulatory programs. Interpreting non-coding genetic risk requires integrated multi-omic reference maps that directly connect regulatory DNA to cellular expression across human tissues. Here we present a single-nucleus multi-omic atlas comprising 459,856 transcriptomic and chromatin accessibility profiles from 21 adult human tissues and four donors, including paired measurements from 160,688 nuclei. The atlas resolves nine cell lineages, 61 broad cell types and 313 subclusters, and identifies 1,085,062 candidate cis-regulatory elements (cCREs), including 161,270 novel elements absent from ENCODE. Regulatory activity was dominated by cell identity but refined by tissue context. Joint profiling enabled 871,177 cCRE-gene associations and revealed lineage-specific regulatory architectures. Cross-tissue accessibility further identified lineage-restricted and constitutively inaccessible chromatin domains, the latter showing preferential hypomethylation across human cancers. Furthermore, we leverage this dataset to train sequence-to-function models to predict chromatin-accessibility effects for 548,656 fine-mapped variants, identifying 18,133 high-effect variants, including 1,120 broadly active variants. Models trained for eight endothelial subtypes further resolve predicted variant effects across vascular beds. Together, this atlas provides a comprehensive cellular and computational framework for interpreting regulatory sequence, context-dependent gene control, and complex trait genetics across the human body.
 
 ## Relationship to the companion pipeline repository
 
