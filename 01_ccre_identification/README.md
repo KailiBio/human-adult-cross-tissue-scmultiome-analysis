@@ -38,20 +38,20 @@ manuscript; override via CLI flags as needed.
 
 ## TSS-proximity grouping
 
-`scripts/annotate_tss_proximity.py` groups the final cCREs into
+`scripts/annotate_tss_proximity.sh` groups the final cCREs into
 TSS-overlap / TSS-proximal / TSS-distal by distance to the nearest GENCODE
 TSS (`bedtools closest -d`):
 
-- distance ≤ `--overlap-distance` (default 200 bp) → `TSS-overlap`
-- distance ≤ `--proximal-distance` (default 2,000 bp) → `TSS-proximal`
+- distance ≤ `-d` (default 200 bp) → `TSS-overlap`
+- distance ≤ `-p` (default 2,000 bp) → `TSS-proximal`
 - otherwise → `TSS-distal`
 
 ```bash
-python scripts/annotate_tss_proximity.py \
-  --ccre-bed final_ccres.bed \
-  --tss-bed /path/to/gencode_tss.bed \
-  --output final_ccres.tss_annotated.tsv
+scripts/annotate_tss_proximity.sh \
+  -a final_ccres.bed \
+  -b /path/to/gencode_tss.bed \
+  -o final_ccres.tss_annotated.tsv
 ```
 
-`--tss-bed` should be a BED file with one row per GENCODE TSS (e.g.
-extracted from a GENCODE GTF as the 5' end of each transcript).
+`-b` should be a BED file with one row per GENCODE TSS (e.g. extracted
+from a GENCODE GTF as the 5' end of each transcript).
