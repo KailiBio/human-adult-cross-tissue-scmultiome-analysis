@@ -92,3 +92,45 @@ default: a single color for all). Outputs: four figures
 `gini_vs_max_delta`, each `.png`/`.pdf`) and
 `variant_effect_specificity.tsv` (`variant_id`, `delta_gini`,
 `n_nonzero_celltypes`, `max_abs_delta`).
+
+## Optimizing the GWAS PIP threshold and testing variant-effect enrichment
+
+`scripts/optimize_pip_and_calc_analytic_z.py` tests, per (GWAS study, cell
+type), whether seq2PRINT-predicted variant effects are enriched relative
+to a leave-one-study-out background. For each study and each candidate
+fine-mapping PIP threshold, computes the mean |delta| across that study's
+credible-set SNPs passing the threshold, then analytic-z-tests it against
+a background pooled from every *other* study's SNPs at that (threshold,
+cell type). Since the "right" PIP threshold trades off SNP count against
+fine-mapping confidence, the threshold giving each study its clearest
+enrichment (highest median z across cell types) is picked as that study's
+own optimized threshold, and the final table is filtered to each study's
+one optimized-threshold row per cell type.
+
+```bash
+python scripts/optimize_pip_and_calc_analytic_z.py \
+  --efo-studies EFO_phenotype_list.txt \
+  --delta-perstudy-dir delta_perStudy/ \
+  --outdir /path/to/output_dir
+```
+
+`--efo-studies` is a tab-separated list of studies to process (columns
+`study_id`, `efo_id`, `phenotype`); `--delta-perstudy-dir` must already
+contain one `snp_with_delta.{study_id}.tsv` per study (columns `PIP`,
+`chrom`, `pos`, one `*_delta` column per cell type) — joining GWAS
+fine-mapping output with seq2PRINT predicted variant effects is a
+separate, heavier data-prep step and out of scope here.
+
+Two additional checks are available but off by default (each roughly
+doubles runtime): `--declump-sensitivity-check` repeats the whole
+analysis on one lead SNP per ~500kb locus per study (to check whether
+enrichment is an LD-driven artifact of treating correlated credible-set
+SNPs as independent), and `--sanity-check-distributions` (with optional
+`--celltype-colors`) renders a multi-page PDF of each study's actual
+per-celltype delta distribution at its optimized threshold.
+
+Outputs: `all_SNP_delta_stats_multiPIP.with_analytic_z.tsv` (every
+study x celltype x threshold), `best_pip_threshold_per_study.tsv`,
+`delta_score.filtered_to_best_threshold.tsv` (the final, one-threshold-
+per-study table), plus `figures/` (threshold-distribution histogram and,
+if requested, the LD-robustness scatter and per-study distribution PDF).
