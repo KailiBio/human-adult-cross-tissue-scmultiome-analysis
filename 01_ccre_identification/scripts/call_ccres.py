@@ -17,7 +17,6 @@ import argparse
 import subprocess
 from pathlib import Path
 
-import numpy as np
 import pandas as pd
 import scanpy as sc
 import snapatac2 as snap

@@ -7,11 +7,9 @@ dependencies:
   - numpy
   - pandas
   - scipy
-  - scikit-learn
   - matplotlib
   - seaborn
-  - scanpy
-  - anndata
+  - scanpy  # pulls in anndata + scikit-learn, used throughout via sc.read_h5ad()
   - statsmodels
   - pyarrow
   - tqdm

@@ -34,7 +34,7 @@ manuscript, organized by topic as scripts are added:
 - [`05_cCRE-gene_links/`](05_cCRE-gene_links) — cCRE–gene linking
 - [`06_chromatin_domains/`](06_chromatin_domains) — Cross-tissue, cell-type-resolved chromatin domain (active/repressive) mapping
 - [`07_variant_effect_models/`](07_variant_effect_models) — Sequence-based models for predicting chromatin-accessibility variant effects
-- [`common/`](common) — shared utility code used across topic folders (currently: consistent filename sanitization for celltype/subtype labels)
+- [`common/`](common) — shared utility code used across topic folders (filename sanitization, default color palettes)
 
 Each topic folder contains its own `scripts/` and `notebooks/`. Set up the
 base analysis environment with `conda env create -f environment.yml`; a few

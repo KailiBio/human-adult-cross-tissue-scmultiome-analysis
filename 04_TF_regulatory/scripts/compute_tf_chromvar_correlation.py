@@ -18,7 +18,6 @@ section 1 (1-3-1, 1-3-2 compute half; FDR correction cells).
 """
 
 import argparse
-import os
 from pathlib import Path
 
 import numpy as np
