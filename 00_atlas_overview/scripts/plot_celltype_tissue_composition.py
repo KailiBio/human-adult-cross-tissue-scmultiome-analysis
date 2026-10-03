@@ -37,6 +37,7 @@ from pathlib import Path
 import matplotlib
 
 matplotlib.use("Agg")
+matplotlib.rcParams["pdf.fonttype"] = 42  # keep PDF text as editable glyphs, not bitmap paths
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd

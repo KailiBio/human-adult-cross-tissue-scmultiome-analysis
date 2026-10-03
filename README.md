@@ -26,14 +26,14 @@ paired repository:
 This repository is being populated with the analyses underlying the
 manuscript, organized by topic as scripts are added:
 
-- [`00_atlas_overview/`](00_atlas_overview) — Overall atlas composition figures (tissue/lineage/celltype/subcluster structure)
-- [`01_ccre_identification/`](01_ccre_identification) — cCRE identification (raw/consensus peak calling, TSS-proximity grouping)
-- [`02_ccre_analysis/`](02_ccre_analysis) — cCRE tiering, ubiquity, and comparisons to ENCODE/sciATAC/VISTA
-- [`03_conservation/`](03_conservation) — Sequence conservation (e.g. phyloP) analysis
-- [`04_TF_regulatory/`](04_TF_regulatory) — Transcription factor motif and footprinting analysis
-- [`05_cCRE-gene_links/`](05_cCRE-gene_links) — cCRE–gene linking
-- [`06_chromatin_domains/`](06_chromatin_domains) — Cross-tissue, cell-type-resolved chromatin domain (active/repressive) mapping
-- [`07_variant_effect_models/`](07_variant_effect_models) — Sequence-based models for predicting chromatin-accessibility variant effects
+- [`00_atlas_overview/`](00_atlas_overview) — Tissue→lineage→celltype→subcluster Sankey diagram; celltype×tissue composition heatmaps and ranked specificity metrics
+- [`01_ccre_identification/`](01_ccre_identification) — Final cCRE calling, TSS-proximity grouping, CG/GC sequence features
+- [`02_ccre_analysis/`](02_ccre_analysis) — cCRE ubiquity, marker cCREs per tissue-celltype, tissue- vs. celltype-dominant cCREs, TE enrichment
+- [`03_conservation/`](03_conservation) — Alignment "triangle" matrix and phyloP/conservation aggregation profiles
+- [`04_TF_regulatory/`](04_TF_regulatory) — ChromVAR motif deviation scores and TF expression vs. ChromVAR correlation
+- [`05_cCRE-gene_links/`](05_cCRE-gene_links) — DORC (domains of regulatory chromatin) calling per cell type, at multiple cutoffs
+- [`06_chromatin_domains/`](06_chromatin_domains) — Genome-wide chromatin domain bins, AER/ADR group definitions, cancer DNA methylation, ADR subgroup circle plot
+- [`07_variant_effect_models/`](07_variant_effect_models) — seq2PRINT base model training, subtype LoRA fine-tuning, predicted variant-effect distributions, GWAS PIP threshold/enrichment testing
 - [`common/`](common) — shared utility code used across topic folders (filename sanitization, default color palettes)
 
 Each topic folder contains its own `scripts/` and `notebooks/`. Set up the
