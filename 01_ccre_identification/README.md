@@ -2,7 +2,7 @@
 
 Scripts for calling candidate cis-regulatory elements (cCREs) from
 cross-tissue chromatin accessibility data and grouping them by distance to
-GENCODE TSS. See [`04_cCRE-gene_links/`](../04_cCRE-gene_links) for linking
+GENCODE TSS. See [`05_cCRE-gene_links/`](../05_cCRE-gene_links) for linking
 cCREs to target genes.
 
 - `scripts/` — command-line / batch scripts
