@@ -51,3 +51,42 @@ spacing/offsets, barycenter rounds) are exposed as flags, defaulting to the
 values used in the manuscript figure — see `--help`.
 
 Outputs: `<--outprefix>.pdf` and `<--outprefix>.png`.
+
+## Celltype x tissue composition: counts, heatmaps, and ranked specificity metrics
+
+`scripts/plot_celltype_tissue_composition.py` takes a per-cell table of
+(tissue, celltype) labels and produces a cells-per-celltype bar chart, two
+composition heatmaps (each tissue's celltype breakdown, and each celltype's
+tissue breakdown), and four ranked scatter plots of each celltype's
+distribution across tissues computed from the tissue-normalized composition
+table: its single highest per-tissue percentage ("max %"), its third-highest
+("3rd max %"), its median percentage, and the Gini index of that percentage
+across tissues (0 = evenly spread, 1 = concentrated in one tissue). Median
+and Gini each additionally get a labeled ("every point annotated with its
+celltype name") version.
+
+```bash
+python scripts/plot_celltype_tissue_composition.py \
+  --cell-table cells.tsv \
+  --outdir /path/to/output_dir
+```
+
+`--cell-table` is tab-separated with `--tissue-col`/`--celltype-col` columns
+(default: `tissue`, `celltype`). `--celltype-colors` is an optional JSON
+color map (default: an auto-assigned deterministic palette).
+`--heatmap-colors` is an optional comma-separated low-to-high hex color
+scale for the two heatmaps (default: the manuscript's "dark citrus" scale).
+
+Outputs: `celltype_cell_counts.pdf`, `composition_celltype_per_tissue_heatmap.pdf`,
+`composition_tissue_per_celltype_heatmap.pdf`, `celltype_{max,third_max}_percent_ranked.pdf`,
+`celltype_{median,gini}_ranked.pdf` plus `..._labeled.pdf`/`.png`, and
+`celltype_composition_metrics.tsv` (celltype, max/3rd-max/median %, Gini,
+n_cells — not written out by the source notebook, which only plotted these;
+added here since the values are already computed and a table chains into
+downstream scripts more easily than a figure).
+
+Note: the source notebook's "tissue composition per cell type" heatmap had
+a copy-paste bug — it plotted the transposed table under axis labels and an
+inline comment that both describe the un-transposed orientation. This script
+uses the un-transposed orientation (tissue rows x celltype columns),
+matching the labels/comment rather than the stray `.T`.

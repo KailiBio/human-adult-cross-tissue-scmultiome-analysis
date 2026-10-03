@@ -26,17 +26,20 @@ columns 1-3).
 
 import argparse
 import json
+import sys
 from pathlib import Path
 
 import matplotlib
 
 matplotlib.use("Agg")
-import matplotlib.colors as mcolors
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from matplotlib.path import Path as MplPath
 from matplotlib.patches import PathPatch
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from common.colors import default_color_dict
 
 
 def organ_group_fn(multi_word_prefixes):
@@ -113,15 +116,6 @@ def compress_and_align(pos_raw, raw_max, ref_max, height_frac, align="top"):
     offset = ref_max * (1 - height_frac) / 2 if align == "center" else 0.0
     positions = {cat: (offset + y0 * scale, offset + y1 * scale) for cat, (y0, y1) in pos_raw.items()}
     return positions, scale
-
-
-def default_color_dict(categories):
-    """Deterministic fallback palette (tab20+tab20b+tab20c, 60 colors, cycled)
-    when no explicit color map is given for a column."""
-    colors = []
-    for name in ("tab20", "tab20b", "tab20c"):
-        colors.extend(mcolors.rgb2hex(c) for c in plt.get_cmap(name).colors)
-    return {cat: colors[i % len(colors)] for i, cat in enumerate(sorted(categories))}
 
 
 def order_categories(preferred_order, present):
