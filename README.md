@@ -48,7 +48,7 @@ If you use this code, please cite:
 
 > Fan et al. *Single-Nucleus Multi-Omic Atlas Maps Regulatory Architecture and
 > Non-Coding Variant Effects across Adult Human Tissues*.
-> https://doi.org/10.64898/2026.09.25.754561
+> bioRxiv https://doi.org/10.64898/2026.09.25.754561
 
 ## Contact
 
