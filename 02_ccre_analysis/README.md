@@ -5,7 +5,6 @@ cross-cluster ubiquity, and comparisons against external references
 (ENCODE cCREs, sciATAC peaks, VISTA enhancers).
 
 - `scripts/` — command-line / batch scripts
-- `notebooks/` — exploratory and figure-generation notebooks
 
 ## cCRE ubiquity
 

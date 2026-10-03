@@ -4,7 +4,6 @@ Scripts for linking cCREs to putative target genes from paired RNA+ATAC
 measurements.
 
 - `scripts/` — command-line / batch scripts
-- `notebooks/` — exploratory and figure-generation notebooks
 
 ## DORC (domains of regulatory chromatin) per cell type
 

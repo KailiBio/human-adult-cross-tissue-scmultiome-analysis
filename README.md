@@ -36,7 +36,7 @@ manuscript, organized by topic as scripts are added:
 - [`07_variant_effect_models/`](07_variant_effect_models) — seq2PRINT base model training, subtype LoRA fine-tuning, predicted variant-effect distributions, GWAS PIP threshold/enrichment testing
 - [`common/`](common) — shared utility code used across topic folders (filename sanitization, default color palettes)
 
-Each topic folder contains its own `scripts/` and `notebooks/`. Set up the
+Each topic folder contains its own `scripts/`. Set up the
 base analysis environment with `conda env create -f environment.yml`; a few
 scripts additionally depend on
 [scPrinter](https://github.com/buenrostrolab/scPrinter) (its own GPU stack,

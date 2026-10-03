@@ -6,7 +6,6 @@ GENCODE TSS. See [`05_cCRE-gene_links/`](../05_cCRE-gene_links) for linking
 cCREs to target genes.
 
 - `scripts/` — command-line / batch scripts
-- `notebooks/` — exploratory and figure-generation notebooks
 
 ## Calling the final cCRE set
 

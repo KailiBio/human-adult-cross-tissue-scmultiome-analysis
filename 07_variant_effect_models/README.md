@@ -6,7 +6,6 @@ endothelial-subtype models resolving predicted effects across vascular
 beds.
 
 - `scripts/` — training / inference / evaluation scripts
-- `notebooks/` — exploratory and figure-generation notebooks
 
 ## seq2PRINT base model training, per cell type
 

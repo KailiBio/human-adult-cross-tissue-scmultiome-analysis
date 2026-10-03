@@ -5,7 +5,6 @@ celltype, and subcluster structure), independent of any specific downstream
 analysis.
 
 - `scripts/` — command-line / batch scripts
-- `notebooks/` — exploratory and figure-generation notebooks
 
 ## Tissue -> lineage -> celltype -> subcluster-count Sankey diagram
 

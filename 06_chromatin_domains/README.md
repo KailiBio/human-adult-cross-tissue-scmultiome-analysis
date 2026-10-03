@@ -5,7 +5,6 @@ and tissues, including identification of lineage-restricted and
 constitutively inaccessible domains.
 
 - `scripts/` — command-line / batch scripts
-- `notebooks/` — exploratory and figure-generation notebooks
 
 ## Genome bins for chromatin domain calling
 
