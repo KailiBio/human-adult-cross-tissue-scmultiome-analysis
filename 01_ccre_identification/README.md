@@ -55,3 +55,28 @@ scripts/annotate_tss_proximity.sh \
 
 `-b` should be a BED file with one row per GENCODE TSS (e.g. extracted
 from a GENCODE GTF as the 5' end of each transcript).
+
+## CG/GC sequence features
+
+`scripts/check_cg_content.sh` checks the CG/GC sequence features of a
+given cCRE list: extracts each cCRE's sequence (`bedtools getfasta`),
+computes its GC content and CpG observed/expected ratio (CpG O/E =
+`(CpG_count / length) / ((C_freq + G_freq) / 2)^2`, a standard measure of
+CpG depletion/enrichment relative to base composition), and optionally
+joins per-cCRE mono-CG and di-CG signal from pre-built genome-wide
+CpG-density bigWig tracks.
+
+```bash
+scripts/check_cg_content.sh \
+  -a final_ccres.bed4 \
+  -f hg38.fa \
+  -o final_ccres.cg_feature.txt \
+  --monocg-bw hg38_monoCG.bw \
+  --dicg-bw hg38_diCG.bw
+```
+
+`--monocg-bw`/`--dicg-bw` are optional; building those genome-wide tracks
+(scanning the genome FASTA for mono-/di-CG density, `bedGraphToBigWig`) is
+a separate, genome-level prep step and out of scope here. Output columns:
+`id`, `gc_content`, `cpg_oe`, `num_cg`, `num_c`, `num_g`, `length`, and
+(if given) `mono_cg`, `di_cg`.
