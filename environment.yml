@@ -19,9 +19,11 @@ dependencies:
   - ucsc-bedgraphtobigwig
   - ucsc-bigwigaverageoverbed
   - ucsc-bigbedtobed
+  - lxml
   - pip
   - pip:
       - snapatac2
+      - pycirclize
 
 # Covers every script except those that depend on scPrinter
 # (04_TF_regulatory/scripts/run_chromvar.py, all of

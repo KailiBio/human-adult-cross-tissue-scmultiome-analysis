@@ -107,3 +107,45 @@ beta (long format: sample_uuid, region_id, mean_beta, n). Outputs:
 `region_level_delta*.csv` (per-project, per-region deltas) and
 `heatmap_table_subgroup_delta_by_region*.csv` (mean/median-aggregated,
 raw/global-normalized).
+
+## Genome-wide ADR subgroup circle plot
+
+`scripts/plot_adr_subgroup_circle_plot.py` draws a circos-style, whole-genome
+plot of 100kb-bin chromatin subgroup assignments: chromosome ideogram, gene
+density (discrete color bins), domain accessibility (continuous heatmap --
+inverted ADR ubiquity, so higher = more open), and one consolidated presence
+ring per region group (which bins were assigned to any subgroup in that
+group, adjacent bins merged into runs). Matches the "v4" style of the source
+notebook: a chosen chromosome dropped from the ideogram entirely (default
+chrY), the circle rotated so a chosen chromosome sits at the 3 o'clock
+position (default chr16), and the accessibility ring drawn as a per-bin
+heatmap rather than a bar chart (which rasterized incorrectly in PDF export).
+
+```bash
+python scripts/plot_adr_subgroup_circle_plot.py \
+  --subgroup-bed ADR_subgroup_assignments_allRegions.bed \
+  --gene-density-bed genome_100kb.geneDensity.GENCODEv47.bed4 \
+  --activity-bed genome_100kb.clean.ubiquity_mapability.group.txt \
+  --n-groups 160 \
+  --outprefix figures/adr_circle_plot
+```
+
+`--subgroup-bed` is a per-bin table (tab-separated, no header, 8 columns:
+chrom, start, end, id, label, num, group, subgroup) -- the subgroup
+assignment itself (clustering cts-ADR bins by which cell type most often
+calls them an ADR, e.g. `T_Cell_1`/`BVEC`/`Neuron_1`) is a separate,
+upstream step and out of scope here. `--activity-bed` is the same kind of
+per-bin ubiquity table [`define_aer_adr_groups.py`](#defining-aeradr-groups)
+consumes (built from [`get_chromatin_domain_bins.sh`](#genome-bins-for-chromatin-domain-calling)'s
+clean bins); `--n-groups`/`--activity-ubiquity-col` match that script's
+flags of the same name. `--palette` (subgroup -> color) and `--region-groups`
+(ring order outer-to-inner, mapping a group label to its member subgroups
+and color) are optional JSON overrides of the manuscript's defaults -- see
+`--help`. `--drop-chromosomes`/`--rotate-to-chrom` default to `chrY`/`chr16`
+(empty string to disable either). Requires `pycirclize` and `lxml`.
+
+Outputs: `<--outprefix>.png`, `.pdf` (ring patches rasterized at high DPI so
+Illustrator gets lightweight embedded bitmaps instead of tens of thousands
+of tiny per-bin paths; everything else -- labels, ticks, legend -- stays
+vector), and `.svg` (every ring/label's patches grouped under one `gid` each,
+so each ring is one selectable, editable object in Illustrator).
