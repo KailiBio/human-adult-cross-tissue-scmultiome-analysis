@@ -20,16 +20,15 @@ method is general to any base cell type / subtype grouping.
 """
 
 import argparse
-import re
+import sys
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 import scprinter as scp
 
-
-def sanitize_subtype(subtype: str) -> str:
-    return re.sub(r"[^\w]", "_", subtype.replace(" ", "_"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from common.naming import sanitize_label
 
 
 def main() -> None:
@@ -71,7 +70,7 @@ def main() -> None:
     printer = scp.load_printer(args.printer, genome)
 
     subtype_barcodes = pd.read_csv(args.subtype_barcodes, sep="\t")
-    subtype_barcodes["subtype_clean"] = subtype_barcodes["subtype"].map(sanitize_subtype)
+    subtype_barcodes["subtype_clean"] = subtype_barcodes["subtype"].map(sanitize_label)
 
     embeddings_all = pd.read_csv(args.embeddings, sep="\t", index_col=0)
 

@@ -47,15 +47,19 @@ every TF x celltype instance).
 ```bash
 python scripts/compute_tf_chromvar_correlation.py \
   --rna-h5ad rna_shared.h5ad \
-  --chromvar-h5ad chromvar_shared.h5ad \
+  --chromvar-h5ad chromvarBG.h5ad \
   --celltype-key CellAnnotation_L1 \
   --outdir /path/to/output_dir
 ```
 
-`--rna-h5ad`/`--chromvar-h5ad` must already share the same cell barcodes
-and the same TF/gene set — reconciling RNA cell ids with ATAC/ChromVAR
-barcodes (sample/channel/donor string-matching) is a separate,
-cohort-specific data-prep step done upstream of this script.
+`--chromvar-h5ad` should be `run_chromvar.py`'s `chromvarBG.h5ad` (the
+bagged, non-redundant TF list) rather than the raw `chromvar.h5ad` --
+correlating redundant, highly-correlated motifs separately just inflates
+the multiple-testing burden without adding information. `--rna-h5ad`/
+`--chromvar-h5ad` must already share the same cell barcodes and the same
+TF/gene set — reconciling RNA cell ids with ATAC/ChromVAR barcodes
+(sample/channel/donor string-matching) is a separate, cohort-specific
+data-prep step done upstream of this script.
 
 Outputs: `tf_chromvar_correlation.per_celltype.txt` (raw, pre-FDR),
 `tf_chromvar_correlation.per_celltype.ctFDR.txt` (FDR within each

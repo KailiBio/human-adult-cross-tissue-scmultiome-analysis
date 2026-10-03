@@ -18,15 +18,15 @@ Consolidated from seq2print/1-1b2_base_model_perCelltype.ipynb section 2.
 """
 
 import argparse
+import sys
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 import scprinter as scp
 
-
-def sanitize_celltype(celltype: str) -> str:
-    return celltype.replace(" ", "_").replace("/", "")
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from common.naming import sanitize_label
 
 
 def main() -> None:
@@ -70,7 +70,7 @@ def main() -> None:
     print(f"generating seq2PRINT configs for {len(celltypes)} cell types")
 
     for celltype in celltypes:
-        celltype_std = sanitize_celltype(celltype)
+        celltype_std = sanitize_label(celltype)
         print(f"processing {celltype} ({celltype_std})")
 
         printer_path = work_dir / "celltype_printer" / f"CZI_snATAC_base_scprinter.{celltype_std}.h5ad"

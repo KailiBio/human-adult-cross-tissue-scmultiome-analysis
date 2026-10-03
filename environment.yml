@@ -12,6 +12,20 @@ dependencies:
   - seaborn
   - scanpy
   - anndata
+  - statsmodels
+  - pyarrow
+  - tqdm
+  - bedtools
+  - ucsc-bedgraphtobigwig
+  - ucsc-bigwigaverageoverbed
+  - ucsc-bigbedtobed
   - pip
   - pip:
-      - pyyaml
+      - snapatac2
+
+# Covers every script except those that depend on scPrinter
+# (04_TF_regulatory/scripts/run_chromvar.py, all of
+# 05_cCRE-gene_links/scripts/, and all of 07_variant_effect_models/scripts/)
+# -- scPrinter pulls in a version-sensitive GPU stack (torch, cupy, rmm)
+# best installed separately per https://github.com/buenrostrolab/scPrinter,
+# in its own environment.

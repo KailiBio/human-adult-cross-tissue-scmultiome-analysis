@@ -17,12 +17,16 @@ Consolidated from 1-1-1_run_DORC_perCelltype.ipynb section 1-1.
 """
 
 import argparse
+import sys
 from pathlib import Path
 
 import pandas as pd
 import scanpy as sc
 import scprinter as scp
 from matplotlib import pyplot as plt
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from common.naming import sanitize_label
 
 
 def main() -> None:
@@ -61,7 +65,7 @@ def main() -> None:
     adata_atac_peak.uns.setdefault("dorc", {})
     for celltype in celltypes:
         print(f"processing {celltype}")
-        celltype_std = celltype.replace(" ", "_").replace("/", "_")
+        celltype_std = sanitize_label(celltype)
 
         adata_rna_sub = adata_rna[adata_rna.obs[args.celltype_key_rna] == celltype, :].copy()
         adata_atac_sub = adata_atac_peak[adata_rna_sub.obs_names, :].copy()

@@ -16,6 +16,7 @@ volcano_per_celltype_all_tfs + loop).
 """
 
 import argparse
+import sys
 from pathlib import Path
 
 import matplotlib
@@ -25,6 +26,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from common.naming import sanitize_label
 
 
 def volcano_per_tf_celltype(
@@ -119,7 +123,7 @@ def volcano_per_celltype_all_tfs(
     plt.grid(False)
     plt.tight_layout()
 
-    safe_ct = celltype.replace(" ", "_").replace("/", "_")
+    safe_ct = sanitize_label(celltype)
     plt.savefig(f"{outdir}/volcano_allTFs.celltype_{safe_ct}.png", dpi=300)
     plt.savefig(f"{outdir}/volcano_allTFs.celltype_{safe_ct}.pdf", dpi=300)
     plt.close()
